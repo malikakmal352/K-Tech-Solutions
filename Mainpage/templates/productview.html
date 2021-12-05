@@ -1,0 +1,41 @@
+{% extends 'mainHeader.html'%}
+
+{% block content %}
+{% load static %}
+<div class="container"><br><br>
+    <div class="row">
+        <div class="col-md-6 col-lg-4  mx-auto text-center border" ><br><br>
+            <img class="rounded wd" style="width:100%;" src="/media/{{product.img}}"><br>
+        </div>
+        <br>
+        <!--        col-md-4-->
+        <div class="col-md-6 col-lg-6 mx-auto" id="detail">
+            <h2><b style="font-size:25px;">Product Name: {{product.Laptop_name}}</b></h2>
+            <hr>
+            <h3><b style="font-size:20px;"> Product Price : {{product.price}}</b></h3>
+            <h3><b style="font-size:20px;"> RR Price :
+                <applet>{{product.RRP}}</applet>
+            </b></h3>
+            <p><b style="font-size:16px;"> ( you Save {{product.Save}} RS ) </b></p>
+            <br>
+            <hr>
+              <p><b style="font-size:25px;"> Product Features:</b></p>
+            <hr>
+
+            <h3><b style="font-size:20px;"> RAM : {{product.RAM}}</b></h3>
+            <h3><b style="font-size:20px;"> Hard Disk : {{product.Hard_disk}}</b></h3>
+            <h3><b style="font-size:20px;"> Processer : {{product.Processer}} GHz</b></h3>
+
+            <hr>
+            <h3><b style="font-size:20px;"> Availability : {{product.status}}</b></h3>
+            <br>
+            <hr>
+            <p><b style="font-size:25px;"> Product detail:</b></p>
+            <hr>
+            <p><b style="font-size:15px;">{{product.Description}}</b></p><br>
+            <hr>
+        </div>
+    </div> <!--        row-->
+</div>  <!--    container-->
+
+{% endblock %}

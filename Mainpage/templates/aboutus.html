@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     {% load static %}
+    <meta charset="UTF-8">
+   <link rel="stylesheet" type="text/css" href='{% static "CSS/aboutus.css" %}'>
+    <style>
+ .about
+   {
+    background: url({% static "s4.jpg" %}) no-repeat left;
+    background-size: 55%;
+    background-color: #fdfdfd;
+    overflow: hidden;
+    padding: 100px 0;
+ }
+
+ @media screen and (max-width:1000px){
+    .about{
+        background-size: 100%;
+        padding: 100px 40px;
+    }
+
+}
+
+@media screen and (max-width:600px){
+    .about{
+        padding: 0;
+    }
+    }
+    </style>
+</head>
+<body>
+ <!-- About us -->
+
+
+    <div class="about" id="ab">
+        <div class="inner-section">
+            <h1>About Us</h1>
+            <p class="text">
+              <b>TakeCare is the website where you can find and get appointment from highly professional doctors in any city.<br>
+              TakeCare is the website where you can buy any Medince on discount price from any  city in pakistan.</b>
+            </p>
+            <div class="skills">
+                <button>Contact Us</button>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
