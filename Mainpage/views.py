@@ -1,5 +1,3 @@
-from asyncio.windows_events import NULL
-
 from django.contrib.auth.hashers import check_password, make_password
 from django.shortcuts import render, redirect
 from Mainpage.models.Category_model import Category
@@ -8,6 +6,7 @@ from .models.order import order, order_items
 
 from .models.Shipping_Address import shippingAddress
 from .models.Customer import customer
+from .models.Add_to_cart import addtocart
 
 
 # Create your views here.
@@ -15,8 +14,8 @@ from .models.Customer import customer
 def mainindex(request):
     products = Product.objects.all().order_by('-id')
     category = Category.get_all_Category()
-    data = {'products': products, 'category': category}
 
+    data = {'products': products, 'category': category}
     return render(request, "index.html", data)
 
 
@@ -26,11 +25,10 @@ def Add_cart(request):
     price = 0
     if request.session.get('email'):
         Customer = request.session['id']
-        Order = order.objects.filter(customer=Customer, complete_order=False)
-        print(Order)
-        if Order:
-            items = order_items.objects.all()
-            for i in items:
+        addcart = addtocart.objects.filter(customer=Customer)
+        if addcart:
+            items = addtocart.objects.filter(customer=Customer)
+            for i in addcart:
                 q = q + i.quantity
                 if i.quantity > 1:
                     price = i.product.price * i.quantity
@@ -39,14 +37,28 @@ def Add_cart(request):
                     total = total + i.product.price
 
         else:
-            items = items = []
-
-
+            items = []
     else:
         items = []
 
     data = {'items': items, 'order': order, 'q': q, 'total': total}
     return render(request, "addcart.html", data)
+
+
+def min_product(request, id):
+    product = addtocart.objects.get(id=id)
+    product.quantity = product.quantity - 1
+    product.save()
+    print(product.quantity)
+    return redirect(Add_cart)
+
+def add_product(request, id):
+    product = addtocart.objects.get(id=id)
+    product.quantity = product.quantity + 1
+    product.save()
+    print(product.quantity)
+    return redirect(Add_cart)
+
 
 
 def checkout(request):
@@ -55,11 +67,10 @@ def checkout(request):
     price = 0
     if request.session.get('email'):
         Customer = request.session['id']
-        Order = order.objects.filter(customer=Customer, complete_order=False)
-        print(Order)
-        if Order:
-            items = order_items.objects.all()
-            for i in items:
+        addcart = addtocart.objects.filter(customer=Customer)
+        if addcart:
+            items = addtocart.objects.filter(customer=Customer)
+            for i in addcart:
                 q = q + i.quantity
                 if i.quantity > 1:
                     price = i.product.price * i.quantity
@@ -68,7 +79,7 @@ def checkout(request):
                     total = total + i.product.price
 
         else:
-            items = items = []
+            items = []
     else:
         items = []
 

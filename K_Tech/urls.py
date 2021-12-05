@@ -19,12 +19,15 @@ from django.urls import path
 from K_Tech import settings
 from django.conf.urls.static import static
 
-from Mainpage.views import mainindex, Add_cart, checkout, productView, Login, Logout, Signup
+from Mainpage.views import mainindex, Add_cart, checkout, productView, Login, Logout, Signup, add_product, min_product
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', mainindex, name='Home_page'),
     path('Cart/', Add_cart, name="ADD to Cart"),
+    path('add/<int:id>', add_product),
+    path('min/<int:id>', min_product),
+
     path('checkout/', checkout, name="checkout page"),
 
     path('register/', Signup),

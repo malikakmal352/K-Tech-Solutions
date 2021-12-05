@@ -7,6 +7,7 @@ from .models.Brand import Brand
 from .models.order import order, order_items
 from .models.Shipping_Address import shippingAddress
 from .models.Customer import customer
+from .models.Add_to_cart import addtocart
 
 
 
@@ -21,3 +22,4 @@ admin.site.register(order)
 admin.site.register(order_items)
 admin.site.register(customer)
 admin.site.register(shippingAddress)
+admin.site.register(addtocart)

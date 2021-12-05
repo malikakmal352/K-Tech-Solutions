@@ -43,12 +43,12 @@
 					<div style="flex:1">
 						<p class="quantity">{{item.quantity}}</p>
 						<div class="quantity">
-							<img class="chg-quantity" src="{% static  'img/3+arrow-up.png' %}">
+							<a href="/add/{{ item.id }}"><img class="chg-quantity" src="{% static  'img/3+arrow-up.png' %}"></a>
 
-							<img class="chg-quantity" src="{% static  'img/2+arrow-down.png' %}">
+							<a href="/min/{{ item.id }}"><img class="chg-quantity" src="{% static  'img/2+arrow-down.png' %}"></a>
 						</div>
 					</div>
-					<div style="flex:1"><p>{{item.get_total }}</p></div>
+					<div style="flex:1"><p>{{item.Total }}</p></div>
 				</div>
                 {% endfor %}
 			</div>
