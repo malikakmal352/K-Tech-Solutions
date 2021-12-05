@@ -51,6 +51,11 @@
     }
 
     </style>
+
+    <script type="text/javascript">
+        var user = '{{request.user}}'
+    </script>
+
     <!--/////////////////////////// Header part///////////////////////////-->
     {% include "mainHeader.html" %}
 
@@ -79,10 +84,10 @@
 
 
             </div>
-            <div class="card-footer">
+            <div class="card-footer" style="align-items: center;">
 							<button data-product="{{i.id}}" data-action="add" class="btn btn-outline-danger col-lg-5 col-sm-12 col-12 m-1 add-btn update-cart" style="float:left" value="Add to Cart">Add to Cart</button>
 							<a href="productview/{{i.id}}" ><input type="button" class="btn btn-outline-danger col-lg-3 col-sm-5 col-6 m-1" style="float:left" value="View "></a>
-							<button class="btn btn-sm btn-danger m-2 col-sm-2 col-2 " style="float:right;"><i class="fa fa-heart"></i></button>
+							<a href="#" ><input type="button" class="btn btn-outline-danger col-lg-3 col-sm-5 col-5 m-1" style="float:right" value="Buy"></a>
                         </div>
         </div>
     </div>
@@ -116,9 +121,9 @@
 
                         </div>
                         <div class="card-footer">
-							<button data-product="{{i.id}}" data-action="add" class="btn btn-outline-danger col-lg-5 col-sm-12 col-12 m-1 add-btn update-cart" style="float:left" value="Add to Cart">Add to Cart</button>
-							<a href="productview/{{i.id}}" ><input type="button" class="btn btn-outline-danger col-lg-3 col-sm-5 col-6 m-1" style="float:left" value="View "></a>
-							<button class="btn btn-sm btn-danger m-2 col-sm-2 col-2 " style="float:right;"><i class="fa fa-heart"></i></button>
+							<button data-product="{{i.id}}" data-action="add" class="btn btn-outline-danger col-lg-5 col-sm-12 col-12 add-btn m-1 update-cart" style="float:left" value="Add to Cart">Add to Cart</button>
+							<a href="productview/{{i.id}}" ><input type="button" class="btn btn-outline-danger col-lg-3 col-sm-5 col-5  m-1" style="float:left" value="View "></a>
+							<a href="#" ><input type="button" class="btn btn-outline-danger col-lg-3 col-sm-5 col-6 m-1 "  value="Buy"></a>
                         </div>
                     </div>
                 </div>
