@@ -6,7 +6,7 @@ from Mainpage.models.Products import Product
 
 
 class order(models.Model):
-    customer = models.ForeignKey(customer, on_delete=models.SET_NULL, null=True, blank=True)
+    customer = models.ForeignKey(customer, on_delete=models.CASCADE, null=True, blank=True)
     date_order = models.DateTimeField(default=datetime.now(), null=True)
     complete_order = models.BooleanField(default=False)
     transaction_id = models.CharField(max_length=100, null=True)
