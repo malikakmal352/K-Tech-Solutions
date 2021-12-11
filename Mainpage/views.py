@@ -30,6 +30,7 @@ def Add_cart(request):
             items = addtocart.objects.filter(customer=Customer)
             for i in addcart:
                 q = q + i.quantity
+                request.session['cart'] = q
                 if i.quantity > 1:
                     price = i.product.price * i.quantity
                     total = total + price
@@ -48,7 +49,10 @@ def Add_cart(request):
 def min_product(request, id):
     product = addtocart.objects.get(id=id)
     product.quantity = product.quantity - 1
-    product.save()
+    if product.quantity == 0:
+        product.delete()
+    else:
+        product.save()
     print(product.quantity)
     return redirect(Add_cart)
 

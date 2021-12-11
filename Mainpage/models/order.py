@@ -1,13 +1,15 @@
 from datetime import datetime
 
 from django.db import models
+from django.template.backends import django
+
 from Mainpage.models.Customer import customer
 from Mainpage.models.Products import Product
 
 
 class order(models.Model):
     customer = models.ForeignKey(customer, on_delete=models.CASCADE, null=True, blank=True)
-    date_order = models.DateTimeField(default=datetime.now(), null=True)
+    date_order = models.DateTimeField(default=django.utils.timezone.now, null=True)
     complete_order = models.BooleanField(default=False)
     transaction_id = models.CharField(max_length=100, null=True)
 

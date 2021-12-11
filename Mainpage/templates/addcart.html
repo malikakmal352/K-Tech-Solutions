@@ -18,7 +18,9 @@
 						<th><h5>Items: <strong>{{q}}</strong></h5></th>
 						<th><h5>Total:<strong> {{total}} Rs</strong></h5></th>
 						<th>
+							{% if request.session.email %}
 							<a  style="float:right; margin:5px;" class="btn btn-success" href="/checkout/">Checkout</a>
+							{% endif %}
 						</th>
 					</tr>
 				</table>

@@ -24,6 +24,7 @@ from Mainpage.views import mainindex, Add_cart, checkout, productView, Login, Lo
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', mainindex, name='Home_page'),
+
     path('Cart/', Add_cart, name="ADD to Cart"),
     path('add/<int:id>', add_product),
     path('min/<int:id>', min_product),
