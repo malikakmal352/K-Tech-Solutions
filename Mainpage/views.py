@@ -12,9 +12,19 @@ from .models.Add_to_cart import addtocart
 # Create your views here.
 
 def mainindex(request):
+    if request.method == 'POST':
+        useremail = request.POST.get('email')
+        prod = request.POST.get('p_id')
+        p_id = Product.objects.get(id=prod)
+
+        if useremail:
+            user = customer.objects.get(email=useremail)
+
+        Addcart = addtocart(customer=user, product=p_id, quantity=1)
+        Addcart.save()
+
     products = Product.objects.all().order_by('-id')
     category = Category.get_all_Category()
-
     data = {'products': products, 'category': category}
     return render(request, "index.html", data)
 
@@ -56,13 +66,13 @@ def min_product(request, id):
     print(product.quantity)
     return redirect(Add_cart)
 
+
 def add_product(request, id):
     product = addtocart.objects.get(id=id)
     product.quantity = product.quantity + 1
     product.save()
     print(product.quantity)
     return redirect(Add_cart)
-
 
 
 def checkout(request):
