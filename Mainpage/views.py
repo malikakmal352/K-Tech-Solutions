@@ -26,7 +26,7 @@ def mainindex(request):
     products = Product.objects.all().order_by('-id')
     category = Category.get_all_Category()
     data = {'products': products, 'category': category}
-    return render(request, "index.html", data)
+    return render(request, "Index.html", data)
 
 
 def Add_cart(request):
