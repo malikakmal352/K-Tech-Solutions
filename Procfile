@@ -1,1 +1,1 @@
- web: gunicorn k-tech-solutions.wsgi 
+ web: gunicorn K_Tech.wsgi 
