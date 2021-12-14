@@ -158,12 +158,12 @@ def registeruser(request):
             'error': error_message,
             'Value': value
         }
-        return render(request, 'Signup.html', data)
+        return render(request, 'signup.html', data)
 
 
 def Signup(request):
     if request.method == 'GET':
-        return render(request, 'Signup.html')
+        return render(request, 'signup.html')
     else:
         return registeruser(request)
 
