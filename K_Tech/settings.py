@@ -28,7 +28,7 @@ DEBUG =True
 ALLOWED_HOSTS = [
 #    '/'
 #    '127.0.0.1'
-#    'k-tech-solutions.herokuapp.com'
+   'k-tech-solutions.herokuapp.com'
 ]
 
 
