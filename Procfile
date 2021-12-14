@@ -1,1 +1,1 @@
-web: gunicorn K-Tech.wsgi 
+web: gunicorn app:app 
