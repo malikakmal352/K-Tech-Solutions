@@ -13,15 +13,26 @@ from .models.Add_to_cart import addtocart
 
 def mainindex(request):
     if request.method == 'POST':
+        scr = request.POST.get('Search')
+        Search = Product.objects.filter(Laptop_name__startswith=scr)
+        print(Search)
         useremail = request.POST.get('email')
         prod = request.POST.get('p_id')
-        p_id = Product.objects.get(id=prod)
+        if prod:
+            p_id = Product.objects.get(id=prod)
 
         if useremail:
             user = customer.objects.get(email=useremail)
+            Addcart = addtocart(customer=user, product=p_id, quantity=1)
+            Addcart.save()
+        if Search:
+            products = Product.objects.filter(Laptop_name__startswith=scr) .order_by('-id')
+        else:
+            products = Product.objects.all().order_by('-id')
 
-        Addcart = addtocart(customer=user, product=p_id, quantity=1)
-        Addcart.save()
+        category = Category.get_all_Category()
+        data = {'products': products, 'category': category}
+        return render(request, "Index.html", data)
 
     products = Product.objects.all().order_by('-id')
     category = Category.get_all_Category()
