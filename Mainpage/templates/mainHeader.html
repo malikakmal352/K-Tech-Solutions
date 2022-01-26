@@ -231,6 +231,16 @@
           }
 
          }
+	    
+	    @media (max-width: 1300px){
+          @media (min-width: 992px){
+          
+
+           l{
+               font-size:11px;
+             }
+        }
+      }
 
 
     </style>
@@ -272,20 +282,34 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a aria-current="page" class="nav-link active" href="/">Home</a>
+			<a aria-current="page" class="nav-link active" href="/"><l>Home</l></a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link" href="#">Laptops</a>
+			<a href="#" class="nav-link" href="#"<l>Laptops</l></a>
                 </li>
                 <li class="nav-item">
-                    <a href='/#ab' class="nav-link">About Us</a>
+			<a href='/#ab' class="nav-link"><l>About Us</l></a>
                 </li>
             </ul>
             <ul class="navbar-nav">
+		  <form action="/" class="d-flex" class="btn-danger" method="post" style="height: 6vh;margin-top:15px;">
+                    {% csrf_token %}
+
+                    <input aria-label="Search" class="form-control" id="exampleDataList"  name="Search" list="datalistOptions"
+                           placeholder="Search" type="search">
+                    <datalist id="datalistOptions">
+                      {% for i in products %}
+                        <option value="{{i.Laptop_name}}">
+                         {% endfor%}
+                    </datalist>
+
+                    <button class="btn btn-outline-danger" type="submit">Search</button>
+                </form>
+
                 {% if request.session.email %}
                 <li class="nav-item">
                     <a class="nav-link" style="color:white;">
-                        <p style="color:black;margin-top:5px;">Hello! {{request.session.email}} </p>
+                        <p style="color:black;margin-top:5px;"<l>>Hello! {{request.session.email}}</l> </p>
                     </a>
                 </li>
                 {% endif %}
